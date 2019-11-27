@@ -7,6 +7,11 @@ import (
 	"testing"
 )
 
+func deleteTestFile(destinationFile string, destinationDir string) {
+	_ = os.Remove(destinationFile)
+	_ = os.RemoveAll(destinationDir)
+}
+
 func TestGz(t *testing.T) {
 	archiveReader, err := os.Open("test_archive.tar")
 	assert.Nil(t, err)
@@ -23,6 +28,8 @@ func TestGz(t *testing.T) {
 	destinationDir, err := ioutil.TempDir("/tmp", "test-gs")
 	_, err = UnTarGz(readFile, destinationDir)
 	assert.Nil(t, err)
+
+	deleteTestFile(destinationFile.Name(), destinationDir)
 }
 
 func TestUnGz(t *testing.T) {
@@ -41,4 +48,6 @@ func TestUnGz(t *testing.T) {
 	destinationDir, err := ioutil.TempDir("/tmp", "test-gs")
 	_, err = UnTar(readFile, destinationDir)
 	assert.Nil(t, err)
+
+	deleteTestFile(destinationFile.Name(), destinationDir)
 }

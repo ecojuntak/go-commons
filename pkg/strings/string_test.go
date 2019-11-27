@@ -6,6 +6,7 @@ import (
 	"github.com/gopaytech/go-commons/pkg/file"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
+	"os"
 	"testing"
 )
 
@@ -22,6 +23,8 @@ This is something I hate to do`
 	stringByte, err := ioutil.ReadFile(fileName)
 	assert.Nil(t, err)
 	assert.Equal(t, source, string(stringByte))
+
+	_ = os.Remove(fileName)
 }
 
 func TestKVJoin(t *testing.T) {
