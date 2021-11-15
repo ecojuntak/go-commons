@@ -1,8 +1,9 @@
 package encoding
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestBase64DecodeSuccess(t *testing.T) {
@@ -15,6 +16,18 @@ func TestBase64DecodeSuccess(t *testing.T) {
 	result, err := Base64Decode(validBase64)
 	assert.Nil(t, err)
 	assert.Equal(t, expectedResult, result)
+}
+
+func TestBase64DecodeByteSuccess(t *testing.T) {
+	validBase64 := "d2VzIHNhbWVzdGluZSBhdGkgaWtpIG5lbG9uZ3NvCiAgICAgICAgd29uZyBzZW5nIHRhayB0cmVzbmFuaSBtYmxlbmphbmkgamFuamkKICAgICAgICBvcG8gb3JhIGVsaW5nIG5hbGlrbyBzZW1vbm8KICAgICAgICBrZWJhayBrZW1iYW5nIHdhbmdpIGplcm9uaW5nIGRvZG8="
+	expectedResult := `wes samestine ati iki nelongso
+        wong seng tak tresnani mblenjani janji
+        opo ora eling naliko semono
+        kebak kembang wangi jeroning dodo`
+
+	result, err := Base64DecodeBytes(validBase64)
+	assert.Nil(t, err)
+	assert.Equal(t, expectedResult, string(result))
 }
 
 func TestBase64DecodeFailed(t *testing.T) {
