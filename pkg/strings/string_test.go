@@ -2,12 +2,12 @@ package strings
 
 import (
 	"fmt"
-	fake "github.com/brianvoe/gofakeit"
-	"github.com/gopaytech/go-commons/pkg/file"
-	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"os"
 	"testing"
+
+	fake "github.com/brianvoe/gofakeit"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSaveToFileSuccess(t *testing.T) {
@@ -17,7 +17,8 @@ Please don't stop me till I'm through
 This is something I hate to do`
 
 	fileName := "/tmp/kissAndSayGoodby"
-	err := file.WriteFile(fileName, source)
+	sourceByte := []byte(source)
+	err := ioutil.WriteFile(fileName, sourceByte, 0644)
 	assert.Nil(t, err)
 
 	stringByte, err := ioutil.ReadFile(fileName)
@@ -56,11 +57,4 @@ func TestKVSplitFailed(t *testing.T) {
 	resultKey, resultValue := KVSplit(kv)
 	assert.Equal(t, resultKey, kv)
 	assert.Equal(t, resultValue, "")
-}
-
-func TestReadFromFileFailed(t *testing.T) {
-	fileName := "/tmp/zxcbasd123"
-
-	_, err := file.ReadFileToString(fileName)
-	assert.NotNil(t, err)
 }

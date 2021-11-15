@@ -14,5 +14,3 @@ The current packages that already provided are:
 - [x] logger
 - [x] stdout
 - [x] strings
-
-    
