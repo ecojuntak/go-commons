@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/ecojuntak/go-commons/compare/v0.2.0...v0.3.0) (2021-11-16)
+
+
+### Features
+
+* add method to create new repository ([3688d49](https://github.com/ecojuntak/go-commons/commit/3688d490041cd6155e15e3f794eb6df969e14373))
+
 # [0.2.0](https://github.com/ecojuntak/go-commons/compare/v0.1.9...v0.2.0) (2021-11-15)
 
 
