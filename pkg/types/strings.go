@@ -39,3 +39,7 @@ func FromKeyValueMap(mapOrigin map[string]string) (string, error) {
 	return result, nil
 
 }
+
+func StringToPointerString(string string) *string {
+	return &string
+}
